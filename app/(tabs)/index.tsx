@@ -1,4 +1,5 @@
 import { Image, StyleSheet } from 'react-native';
+
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
@@ -16,7 +17,7 @@ export default function HomeScreen() {
         />
       }>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">APUEngage</ThemedText>
+        <ThemedText type="title">APUEngage    "God First"    Since 1899</ThemedText>
         <HelloWave />
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
@@ -26,13 +27,13 @@ export default function HomeScreen() {
         </ThemedText>
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Where to find events</ThemedText>
+        <ThemedText type="subtitle">Step 1: Where to find events</ThemedText>
         <ThemedText>
-          Press the Explore tab (Bottom of your screen) to learn more about what opportunities are available to you!
+          Press the Explore tab (Bottom right side of your screen) to learn more about what opportunities are available to you!
         </ThemedText>
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Explore around the App!</ThemedText>
+        <ThemedText type="subtitle">Step 2: Explore around the App!</ThemedText>
         <ThemedText>
         Here at APU, we all strive to serve others as fellow scholars, Christians, brother(s)/sister(s), and spouse(s) just as Jesus Christ served us. The Explore Page will have (Settings // Search // Events // Rewards). To navigate and customize to your personal perferences!
         </ThemedText>
