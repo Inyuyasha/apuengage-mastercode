@@ -1,5 +1,4 @@
-import { Image, StyleSheet } from 'react-native';
-
+import { Image, StyleSheet, View } from 'react-native';
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
@@ -8,7 +7,7 @@ import { ThemedView } from '@/components/ThemedView';
 export default function HomeScreen() {
   return (
     <ParallaxScrollView
-      headerBackgroundColor={{ light: '#CB2323', dark: '#353636' }}
+      headerBackgroundColor={{ light: 'white', dark: 'red' }}
       headerImage={
         <Image
           source={require('@/assets/images/apu-logo.png')}
@@ -16,7 +15,7 @@ export default function HomeScreen() {
         />
       }>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">APUEngage    "God First"    Since 1899</ThemedText>
+        <ThemedText type="title">APUEngage</ThemedText>
         <HelloWave />
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
@@ -25,16 +24,23 @@ export default function HomeScreen() {
           Get Started by signing up to your local community!
         </ThemedText>
       </ThemedView>
+
+      <View style = {styles.divider} />
+
       <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Where to find events</ThemedText>
+        <ThemedText type="subtitle">Step 1: Find events</ThemedText>
         <ThemedText>
-          Press the Explore tab (Bottom right side of your screen) to learn more about what opportunities are available to you!
+        Tap the Explore tab to discover service credit opportunities near you.
         </ThemedText>
       </ThemedView>
+
+      <View style = {styles.divider} />
+
+
       <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore around the App!</ThemedText>
+        <ThemedText type="subtitle">Step 2: Explore the App!</ThemedText>
         <ThemedText>
-        Here at APU, we all strive to serve others as fellow scholars, Christians, brother(s)/sister(s), and spouse(s) just as Jesus Christ served us. The Explore Page will have (Settings // Search // Events // Rewards). To navigate and customize to your personal perferences!
+        APU encourages serving like Jesus together. Use the Explore tab to understand the breakdown access within APUEngage!
         </ThemedText>
       </ThemedView>
     </ParallaxScrollView>
@@ -46,16 +52,26 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
+    marginBottom: 16,
+  },
+  divider: {
+    height: 1,
+    backgroundColor: '#999',
+    opacity: 0.4,
+    marginVertical: 12,
   },
   stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+    gap: 12,
+    marginBottom: 12,
+  },
+  logoWrapper: {
+    paddingVertical: 20,
   },
   reactLogo: {
     height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
+    width: 180,
+    bottom: 1,
+    left: 125,
     position: 'absolute',
   },
 });

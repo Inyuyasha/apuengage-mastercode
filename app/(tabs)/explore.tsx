@@ -1,179 +1,148 @@
 // Import the required React Native components and custom components
-import { Image, Platform, StyleSheet, TouchableOpacity } from 'react-native';
-
+import { Image, Platform, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Collapsible } from '@/components/Collapsible';
 import { ExternalLink } from '@/components/ExternalLink';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import { useRouter } from 'expo-router'; // Import useRouter
 
-// Define the configuration array of function buttons
-const F_BUTTON =[
-  { 
-    title: 'Settings', 
-    color: '#990000', 
-  },
-  { 
-    title: 'Search', 
-    color: '#CC0000',
-  },
-  { 
-    title: 'Events', 
-    color: '#FF0000',
-  },
-  { 
-    title: 'Rewards', 
-    color: '#FF3333',
-  },
-]
 
-// Define the TabTwoScreen component
 export default function TabTwoScreen() {
+  const router = useRouter(); // Initialize router inside function
 
-  // The function to handle button click events
+
+  // Function to handle button clicks
   const handlePress = (title: string) => {
-    console.log(`Pressed ${title}`)  // can add navigation logic here
-    window.location.href = "https://apuosd.org/local-engagement";
-  }
+    if (title === 'Rewards') {
+      router.push('/Reward'); // Navigate to the Rewards page
+    } else {
+      console.log(`Pressed ${title}`);
+    }
+  };
+
+
+  // Define the configuration array of function buttons
+  const F_BUTTON = [
+    { title: 'Settings', color: '#990000' },
+    { title: 'Search', color: '#CC0000' },
+    { title: 'Events', color: '#FF0000' },
+    { title: 'Rewards', color: '#FF3333' },
+  ];
 
   return (
-    // Use the ParallaxScrollView component as the root view of the page
     <ParallaxScrollView
-      headerBackgroundColor={{ light: '#CB2323', dark: '#353636' }}
-            headerImage={
-              <Image
-                source={require('@/assets/images/apu-logo.png')}
-                style={styles.headerImage}
-              />
-            }>
-      
-      {/* Button grid */}
+      headerBackgroundColor={{ light: '#CB2323', dark: 'red' }}
+      headerImage={
+        <Image source={require('@/assets/images/apu-logo.png')} style={styles.headerImage} />
+      }
+    >
+      {/* Header */}
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Explore</ThemedText>
       </ThemedView>
-      <ThemedText>Matthew 5:14-16 "You are the light of the world. A town built on a hill cannot be hidden. 
-        Neither do people light a lamp and put it under a bowl. Instead they put it on its stand, and it 
-        gives light to everyone in the house. In the same way, let your light shine before others, that they
-         may see your good deeds and glorify your Father in heaven" (NIV).</ThemedText>
+      <ThemedText style={styles.titleContainer}>Matthew 5:14–16 (NIV)</ThemedText>
+      <ThemedText>
+        “You are the light of the world. A town built on a hill cannot be hidden. 
+        Neither do people light a lamp and put it under a bowl. Instead they put it on its stand, 
+        and it gives light to everyone in the house. In the same way, let your light shine before others, 
+        that they may see your good deeds and glorify your Father in heaven.”
+      </ThemedText>
       
-      {/* No.1 pattern*/}
-      <Collapsible title="File-based routing">
-        <ThemedText>
-          This app has two screens:{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/explore.tsx</ThemedText>
-        </ThemedText>
-        <ThemedText>
-          The layout file in <ThemedText type="defaultSemiBold">app/(tabs)/_layout.tsx</ThemedText>{' '}
-          sets up the tab navigator.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/router/introduction">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      
-      {/* No.2 pattern*/}
-      <Collapsible title="Android, iOS, and web support">
-        <ThemedText>
-          You can open this project on Android, iOS, and the web. To open the web version, press{' '}
-          <ThemedText type="defaultSemiBold">w</ThemedText> in the terminal running this project.
-        </ThemedText>
-      </Collapsible>
-      
-      {/* No.3 pattern*/}
-      <Collapsible title="Images">
-        <ThemedText>
-          For static images, you can use the <ThemedText type="defaultSemiBold">@2x</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">@3x</ThemedText> suffixes to provide files for
-          different screen densities
-        </ThemedText>
-        <Image source={require('@/assets/images/react-logo.png')} style={{ alignSelf: 'center' }} />
-        <ExternalLink href="@/assets/images/apu-logo.png">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      
-      {/* No.4 pattern*/}
-      <Collapsible title="Custom fonts">
-        <ThemedText>
-          Open <ThemedText type="defaultSemiBold">app/_layout.tsx</ThemedText> to see how to load{' '}
-          <ThemedText style={{ fontFamily: 'SpaceMono' }}>
-            custom fonts such as this one.
-          </ThemedText>
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/versions/latest/sdk/font">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      
-      {/* No.5 pattern*/}
-      <Collapsible title="Light and dark mode components">
-        <ThemedText>
-          This template has light and dark mode support. The{' '}
-          <ThemedText type="defaultSemiBold">useColorScheme()</ThemedText> hook lets you inspect
-          what the user's current color scheme is, and so you can adjust UI colors accordingly.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/develop/user-interface/color-themes/">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      
-      {/* No.6 pattern*/}
-      <Collapsible title="Animations">
-        <ThemedText>
-          This template includes an example of an animated component. The{' '}
-          <ThemedText type="defaultSemiBold">components/HelloWave.tsx</ThemedText> component uses
-          the powerful <ThemedText type="defaultSemiBold">react-native-reanimated</ThemedText>{' '}
-          library to create a waving hand animation.
-        </ThemedText>
-        {Platform.select({
-          ios: (
-            <ThemedText>
-              The <ThemedText type="defaultSemiBold">components/ParallaxScrollView.tsx</ThemedText>{' '}
-              component provides a parallax effect for the header image.
-            </ThemedText>
-          ),
-        })}
-      </Collapsible>
+      <View style={styles.divider} />
 
-      {/* Button set up */}
-      <ThemedView style = {styles.buttonGrid}>
-        {/* Button property*/}
+ {/* Pattern 1 */}
+  <View style={styles.sectionContainer}>
+  <Collapsible title="Disclaimer!! Information about Graduation (MUST READ!)">
+    <ThemedText>
+      You must complete all required service credit hours to receive your diploma. 
+      You can still walk at graduation, but your diploma will be held until all hours are finished.
+    </ThemedText>
+  <ExternalLink href="https://catalog.apu.edu/policies-procedures/undergraduate/graduation-requirements-commencement/#:~:text=All%20candidates%20for%20graduation%20must,designated%20academic%20service%2Dlearning%20courses.">
+    <ThemedText type="link">Learn more</ThemedText>
+  </ExternalLink>
+  </Collapsible>
+
+
+ {/* Pattern 2 */}
+ <Collapsible title="Shoutout to the Creators of APUEngage!">
+    <ThemedText>
+    Special thanks to Brodrick, Darien, Annabelle, Yi, and David for bringing APUEngage to life!
+    </ThemedText>
+  </Collapsible>
+
+ {/* Pattern 3 */}
+ <Collapsible title="Events">
+  <ThemedText>
+    Find one-time and ongoing service opportunities from Azusa to Los Angeles.
+  </ThemedText>
+</Collapsible>
+
+
+{/* Pattern 4 */}
+  <Collapsible title="Rewards">
+  <ThemedText>
+    Earn fun rewards by completing your service credit hours!
+  </ThemedText>
+</Collapsible>
+
+
+ {/* Pattern 5 */}
+ <Collapsible title="Search">
+  <ThemedText>
+    Discover organizations vetted and approved by the Office of Service and Discipleship (OSD) on our Community Board.
+  </ThemedText>
+  <ExternalLink href="https://apuosd.org/community-board-2023">
+    <ThemedText type="link">Learn more</ThemedText>
+  </ExternalLink>
+</Collapsible>
+
+
+{/* Pattern 6 */}
+  <Collapsible title="Settings">
+    <ThemedText>
+      Profile information, Language, Notifications, Dark/Light Mode, FAQs (Contact support, Report a problem)
+    </ThemedText>
+  </Collapsible>
+</View>
+
+
+      {/* Button Grid */}
+      <ThemedView style={styles.buttonGrid}>
         {F_BUTTON.map((btn, index) => (
           <TouchableOpacity
-            key={index} 
+            key={index}
             style={[styles.button, { backgroundColor: btn.color }]}
             onPress={() => handlePress(btn.title)}
-          >  
-            {/* Button image */}
-            <Image
-            style={styles.logo}
-            resizeMode="contain"
-            />
-            {/* Button text */}
-            <ThemedText style={styles.buttonText}>
-            {btn.title}
-            </ThemedText>
+          >
+            <Image style={styles.logo} resizeMode="contain" />
+            <ThemedText style={styles.buttonText}>{btn.title}</ThemedText>
           </TouchableOpacity>
         ))}
       </ThemedView>
-
     </ParallaxScrollView>
   );
 }
 
+
 // Define styles preresent
 const styles = StyleSheet.create({
   headerImage: {
-    color: '#808080',
-    bottom: -150,
-    left: -30,
+    height: 180,
+    width: '42%',
+    bottom: 0,
+    left: 120,
+    shadowColor: '#000',
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
     position: 'absolute',
   },
+ 
   titleContainer: {
     flexDirection: 'row',
     gap: 8,
   },
+ 
   buttonGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
@@ -181,30 +150,48 @@ const styles = StyleSheet.create({
     gap: 12,
     padding: 16,
   },
+ 
   button: {
-    width: '35%',
+    width: '40%',
     aspectRatio: 1.5,
     borderRadius: 16,
-    padding: 60,
+    padding: 10,
     justifyContent: 'center',
     alignItems: 'center',
     shadowColor: '#000',
-    shadowOffset: { width: 10, height: 4 },
+    shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,
     shadowRadius: 6,
-    elevation: 8, 
+    elevation: 8,
   },
+ 
+  logo: {
+    width: 30,
+    height: 30,
+    marginBottom: 8,
+  },
+ 
   buttonText: {
     color: 'white',
-    fontSize: 18,
+    fontSize: 13,
     fontWeight: '600',
     textShadowColor: 'rgba(0, 0, 0, 0.25)',
     textShadowOffset: { width: 0, height: 1 },
     textShadowRadius: 2,
   },
-  logo: {
-    width: 60,
-    height: 60,
-    marginBottom: 8,
+ 
+  divider: {
+    height: 1,
+    backgroundColor: '#555',
+    opacity: 0.3,
+    marginVertical: 12,
+    width: '100%',
+  },
+  
+  sectionContainer: {
+    gap: 12,
+    marginTop: 8,
+    marginBottom: 24,
+    paddingHorizontal: 4,
   },
 });

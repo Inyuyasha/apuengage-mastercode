@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "APUEngage MasterCode",
-    "slug": "apuengage-mastercode",
+    "name": "APUEngage",
+    "slug": "APUEngage",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -9,15 +9,13 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.dgalan21.apuengagemastercode"
+      "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      },
-      "package": "com.dgalan21.apuengagemastercode"
+      }
     },
     "web": {
       "bundler": "metro",
@@ -38,18 +36,6 @@
     ],
     "experiments": {
       "typedRoutes": true
-    },
-    "extra": {
-      "eas": {
-        "projectId": "b90a8808-c416-45f4-aea2-d3173c30f27b"
-      }
-    },
-    "owner": "dgalan21",
-    "updates": {
-      "url": "https://u.expo.dev/b90a8808-c416-45f4-aea2-d3173c30f27b"
-    },
-    "runtimeVersion": {
-      "policy": "appVersion"
     }
   }
 }
