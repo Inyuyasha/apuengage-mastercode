@@ -43,6 +43,51 @@
         tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
         }}
         />
+        <Tabs.Screen
+          name="Events"
+          options={{
+          title: 'Events',
+          tabBarIcon: ({ color }) => (
+          <IconSymbol size={28} name="party.popper" color={color} />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="Reward"
+          options={{
+          title: 'Reward',
+          tabBarIcon: ({ color }) => (
+          <IconSymbol size={28} name="gift.fill" color={color} />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="SubmitServiceScreen"
+          options={{
+          title: 'Submit',
+          tabBarIcon: ({ color }) => (
+          <IconSymbol size={28} name="square.and.pencil" color={color} />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="ViewSubmissionsScreen"
+          options={{
+          title: 'Submissions',
+          tabBarIcon: ({ color }) => (
+          <IconSymbol size={28} name="doc.text.magnifyingglass" color={color} />
+            ),
+          }}
+        />
+         <Tabs.Screen
+          name="Setting"
+          options={{
+          title: 'Setting',
+          tabBarIcon: ({ color }) => (
+          <IconSymbol size={28} name="gearshape.fill" color={color} />
+            ),
+          }}
+        />
         </Tabs>
         );
         }
