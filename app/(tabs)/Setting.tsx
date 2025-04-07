@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, Switch, TextInput, Button, ScrollView, StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';
+import { Linking } from 'react-native';
 
 const SettingsScreen = () => {
   const router = useRouter();
@@ -42,9 +43,14 @@ const SettingsScreen = () => {
 
       {/* Back Button */}
       <View style={{ marginVertical: 20 }}>
-        <Button title="Back to Home" onPress={() => router.push('/')} />
+      <Button title="Back to Home" onPress={() => router.push('/')} />
       </View>
-    </ScrollView>
+
+      {/* Contact Button */}
+      <View style={{ marginVertical: 10 }}>
+      <Button title="Contact Us!" onPress={() => Linking.openURL('https://www.apu.edu/spiritual-life/service-discipleship/')} />
+      </View>
+      </ScrollView>
   );
 };
 
@@ -61,7 +67,8 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 28,
     fontWeight: 'bold',
-    marginBottom: 20,
+    marginTop: 30,
+    marginBottom: 10,
   },
   darkText: {
     color: '#FFF',

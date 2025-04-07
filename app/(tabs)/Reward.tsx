@@ -1,12 +1,11 @@
 import { View, Text, StyleSheet, ImageBackground, Button, ScrollView } from 'react-native';
 import React from 'react';
 import { useRouter } from 'expo-router';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 // Back Button Component
-// This component renders a button that navigates back to the '/explore' screen when pressed.
 const Reward = () => {
-  const router = useRouter(); // Initialize the router for navigation
-
+  const router = useRouter();
   return (
     <View style={{ marginVertical: 10 }}>
       <Button title="Back to Explore" onPress={() => router.push('/explore')} />
@@ -15,9 +14,7 @@ const Reward = () => {
 };
 
 // Main Rewards Screen Component
-// This component displays the rewards screen, including a list of rewards and information on how to earn them.
 const RewardsScreen = () => {
-  // Array of rewards with titles and image URLs
   const rewards = [
     { title: 'Gift Card', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTl9ah5Lp6CYS7EHNuSDmz2rXHEjh9zDQAnUg&s' },
     { title: 'Raising Canes', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKwB8hjVHFwc6Zs04raGFVKRC3TulJNuiGpA&s' },
@@ -30,52 +27,48 @@ const RewardsScreen = () => {
   ];
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      {/* Title and Subtitle */}
-      <Text style={styles.title}>Rewards</Text>
-      <Text style={styles.subtitle}>Here is the list of rewards available!</Text>
+    <SafeAreaView style={{ flex: 1 }}>
+      <ScrollView contentContainerStyle={styles.container}>
+        <Text style={styles.title}>Rewards</Text>
+        <Text style={styles.subtitle}>Here is the list of rewards available!</Text>
 
-      {/* Back Button Component */}
-      <Reward />
+        {/* Back Button Component */}
+        <Reward />
 
-      {/* Rewards Grid */}
-      {/* Displaying rewards in a grid format */}
-      <View style={styles.grid}>
-        {rewards.map((reward, index) => (
-          <ImageBackground 
-            key={index} 
-            source={{ uri: reward.image }} 
-            style={styles.tile} 
-            imageStyle={{ borderRadius: 12 }} // Rounds the corners of the images
-          >
-            <View style={styles.overlay}> {/* Dark overlay for better text visibility */}
-              <Text style={styles.tileText}>{reward.title}</Text>
-            </View>
-          </ImageBackground>
-        ))}
-      </View>
+        {/* Rewards Grid */}
+        <View style={styles.grid}>
+          {rewards.map((reward, index) => (
+            <ImageBackground
+              key={index}
+              source={{ uri: reward.image }}
+              style={styles.tile}
+              imageStyle={{ borderRadius: 12 }}
+            >
+              <View style={styles.overlay}>
+                <Text style={styles.tileText}>{reward.title}</Text>
+              </View>
+            </ImageBackground>
+          ))}
+        </View>
 
-      {/* How to Earn Rewards Section */}
-      <View style={styles.infoBox}>
-        <Text style={styles.infoTitle}>How to Earn Rewards</Text>
-        <Text style={styles.infoText}>
-          Complete service credits and participate in activities to earn these rewards!
-        </Text>
-      </View>
-    </ScrollView>
+        {/* How to Earn Rewards Section */}
+        <View style={styles.infoBox}>
+          <Text style={styles.infoTitle}>How to Earn Rewards</Text>
+          <Text style={styles.infoText}>
+            Complete service credits and participate in activities to earn these rewards!
+          </Text>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
-// Exporting Components
-// Exporting the main screen and the back button component for use in other parts of the app
 export default RewardsScreen;
 export { Reward };
 
-// Styles
-// Defines the styling for the components used in the Rewards screen
 const styles = StyleSheet.create({
   container: {
-    flexGrow: 1, // Ensures the ScrollView takes up the entire screen
+    flexGrow: 1,
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
@@ -92,23 +85,23 @@ const styles = StyleSheet.create({
     color: '#555',
   },
   grid: {
-    flexDirection: 'row', // Lays out the rewards in rows
-    flexWrap: 'wrap', // Allows items to wrap to the next line
+    flexDirection: 'row',
+    flexWrap: 'wrap',
     justifyContent: 'center',
-    gap: 12, // Space between the tiles
   },
   tile: {
-    width: '45%', // Each tile takes up 45% of the row width
-    aspectRatio: 1.5, // Controls the height relative to the width
+    width: '45%',
+    aspectRatio: 1.5,
     justifyContent: 'flex-end',
     alignItems: 'center',
     borderRadius: 12,
     overflow: 'hidden',
+    margin: 6, // Replaces unsupported gap
   },
   overlay: {
     width: '100%',
     paddingVertical: 10,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent background for text
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
     alignItems: 'center',
   },
   tileText: {
@@ -124,10 +117,10 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     alignItems: 'center',
     shadowColor: '#000',
-    shadowOffset: { width: 2, height: 2 }, // Shadow positioning
+    shadowOffset: { width: 2, height: 2 },
     shadowOpacity: 0.2,
     shadowRadius: 4,
-    elevation: 5, // Elevation for Android shadow effect
+    elevation: 5,
   },
   infoTitle: {
     fontSize: 20,
